@@ -1,4 +1,3 @@
-// 🧾 Formulir.tsx (updated handleSubmit untuk 2 endpoint)
 'use client';
 
 import { useState } from 'react';
@@ -33,7 +32,6 @@ const RegistrationForm = () => {
     setSuccessMsg('');
 
     try {
-      // 1️⃣ Simpan ke Supabase
       const res = await fetch('/api/registrasi', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -56,7 +54,6 @@ const RegistrationForm = () => {
       const insertedId = regData.id;
       const insertedToken = regData.token;
 
-      // 2️⃣ Kirim pesan WA
       const resWa = await fetch('/api/send-wa', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -68,8 +65,8 @@ const RegistrationForm = () => {
           akunTambahan: selectedExtras,
           paket: `Paket ${selectedPackage}`,
           tagihan: totalCost,
-          id: insertedId, // hanya dikirim ke backend, tidak ditampilkan ke user
-          token: insertedToken, // ID dari Supabase
+          id: insertedId,
+          token: insertedToken,
         }),
       });
 
@@ -78,132 +75,125 @@ const RegistrationForm = () => {
         throw new Error(waData.message || 'Gagal kirim pesan WhatsApp');
       }
 
-      // ✅ Redirect ke invoice
       router.push(`/invoices/${insertedId}`);
     } catch (err: any) {
       setErrorMsg('❌ ' + err.message);
       console.error('⛔ Error:', err);
     }
   };
+
   return (
+    <section className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md">
+      <h2 className="text-2xl font-bold text-center mb-6 text-gray-800 dark:text-white">
+        Form Pendaftaran
+      </h2>
 
-    <section>
-       <h2 className="text-2xl font-bold text-center mb-6">Form Pendaftaran</h2>
-       <form className="space-y-6" onSubmit={handleSubmit}>
-         {errorMsg && <p className="text-red-500">{errorMsg}</p>}
-         {successMsg && <p className="text-green-600">{successMsg}</p>}
+      <form className="space-y-6" onSubmit={handleSubmit}>
+        {errorMsg && <p className="text-red-500 dark:text-red-400">{errorMsg}</p>}
+        {successMsg && <p className="text-green-600 dark:text-green-400">{successMsg}</p>}
 
-         <div>
-           <label className="block text-gray-700 mb-2">Nama Lengkap:</label>
-           <input
-             type="text"
-             value={nama}
-             onChange={(e) => setNama(e.target.value)}
-             className="w-full px-4 py-2 border rounded-lg"
-             required
-           />
-         </div>
+        <div>
+          <label className="block text-gray-700 dark:text-gray-200 mb-2">Nama Lengkap:</label>
+          <input
+            type="text"
+            value={nama}
+            onChange={(e) => setNama(e.target.value)}
+            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+            required
+          />
+        </div>
 
-         <div>
-           <label className="block text-gray-700 mb-2">Email:</label>
-           <input
-             type="email"
-             value={email}
-             onChange={(e) => setEmail(e.target.value)}
-             className="w-full px-4 py-2 border rounded-lg"
-             required
-           />
-         </div>
+        <div>
+          <label className="block text-gray-700 dark:text-gray-200 mb-2">Email:</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+            required
+          />
+        </div>
 
-         <div>
-           <label className="block text-gray-700 mb-2">Nomor WhatsApp:</label>
-           <input
-             type="tel"
-             value={whatsapp}
-             onChange={(e) => setWhatsapp(e.target.value)}
-             className="w-full px-4 py-2 border rounded-lg"
-             required
-           />
-         </div>
+        <div>
+          <label className="block text-gray-700 dark:text-gray-200 mb-2">Nomor WhatsApp:</label>
+          <input
+            type="tel"
+            value={whatsapp}
+            onChange={(e) => setWhatsapp(e.target.value)}
+            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+            required
+          />
+        </div>
 
-       <div>
-         <label className="block text-gray-700 mb-2">Akun Instagram Utama:</label>
-         <select
-           value={mainAccount}
-           onChange={(e) => setMainAccount(e.target.value)}
-           className="w-full px-4 py-2 border rounded-lg"
-          
-           required
-         >
-           <option value="" disabled >Pilih akun utama</option>
-           <option value="loker.engineering">@loker.engineering</option>
-           <option value="lokerdigitalmarketing">@lokerdigitalmarketing</option>
-           <option value="loker_mengajar">@loker_mengajar</option>
-           <option value="lokerjawatengah_official">@lokerjawatengah_official</option>
-           <option value="loker_akuntansikeuangan">@loker_akuntansikeuangan</option>
-           <option value="lokerjawatimur_official">@lokerjawatimur_official</option>
-           <option value="loker_dokterkesehatan">@loker_dokterkesehatan</option>
-         </select>
-       </div>
+        <div>
+          <label className="block text-gray-700 dark:text-gray-200 mb-2">Akun Instagram Utama:</label>
+          <select
+            value={mainAccount}
+            onChange={(e) => setMainAccount(e.target.value)}
+            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+            required
+          >
+            <option value="" disabled>Pilih akun utama</option>
+            {extraAccounts.map((acc) => (
+              <option key={acc} value={acc.replace('@', '')}>{acc}</option>
+            ))}
+          </select>
+        </div>
 
-       <div>
- <h4 className="text-gray-700 mb-2">Akun Tambahan (+ Rp 5.000/akun):</h4>
- {extraAccounts.map((acc) => (
-   <label key={acc} className="block text-gray-600">
-     <input
-       type="checkbox"
-       className="mr-2"
-       checked={selectedExtras.includes(acc)}
-       onChange={() => {
-         let updated = [...selectedExtras];
-         if (updated.includes(acc)) {
-           updated = updated.filter((item) => item !== acc);
-         } else {
-           updated.push(acc);
-         }
-         setSelectedExtras(updated);
-         setTotalCost(selectedPackage + updated.length * 5000);
-       }}
-     />
-     {acc}
-   </label>
- ))}
-</div>
+        <div>
+          <h4 className="text-gray-700 dark:text-gray-200 mb-2">Akun Tambahan (+ Rp 5.000/akun):</h4>
+          {extraAccounts.map((acc) => (
+            <label key={acc} className="block text-gray-600 dark:text-gray-300">
+              <input
+                type="checkbox"
+                className="mr-2"
+                checked={selectedExtras.includes(acc)}
+                onChange={() => {
+                  let updated = [...selectedExtras];
+                  if (updated.includes(acc)) {
+                    updated = updated.filter((item) => item !== acc);
+                  } else {
+                    updated.push(acc);
+                  }
+                  setSelectedExtras(updated);
+                  setTotalCost(selectedPackage + updated.length * 5000);
+                }}
+              />
+              {acc}
+            </label>
+          ))}
+        </div>
 
-         <div>
-           <label className="block text-gray-700 mb-2">Pilih Paket:</label>
-           <select
-             value={selectedPackage}
-             onChange={(e) => {
-               const price = parseInt(e.target.value);
-               setSelectedPackage(price);
-               setTotalCost(price + selectedExtras.length * 5000);
-             }}
-             className="w-full px-4 py-2 border rounded-lg"
-           >
-             <option value={45000}>STARTER - Rp 45.000</option>
-             <option value={95000}>BASIC - Rp 95.000</option>
-             <option value={135000}>PREMIUM - Rp 135.000</option>
-           </select>
-         </div>
+        <div>
+          <label className="block text-gray-700 dark:text-gray-200 mb-2">Pilih Paket:</label>
+          <select
+            value={selectedPackage}
+            onChange={(e) => {
+              const price = parseInt(e.target.value);
+              setSelectedPackage(price);
+              setTotalCost(price + selectedExtras.length * 5000);
+            }}
+            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+          >
+            <option value={45000}>STARTER - Rp 45.000</option>
+            <option value={95000}>BASIC - Rp 95.000</option>
+            <option value={135000}>PREMIUM - Rp 135.000</option>
+          </select>
+        </div>
 
-         <div className="text-lg font-semibold">
-           <p>Total Tagihan: <span className="text-blue-600">Rp {totalCost.toLocaleString()}</span></p>
-         </div>
+        <div className="text-lg font-semibold text-gray-800 dark:text-white">
+          <p>Total Tagihan: <span className="text-blue-600 dark:text-blue-400">Rp {totalCost.toLocaleString()}</span></p>
+        </div>
 
-         <button
-           type="submit"
-           className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700"
-         >
-           Daftar
-         </button>
-       </form>
-       </section>
+        <button
+          type="submit"
+          className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 dark:hover:bg-blue-500"
+        >
+          Daftar
+        </button>
+      </form>
+    </section>
   );
 };
 
 export default RegistrationForm;
-
-
-
-
