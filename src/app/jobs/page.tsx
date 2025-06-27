@@ -14,6 +14,15 @@ export default function JobsPage() {
   const [searchPosisi, setSearchPosisi] = useState('');
   const [filterLokasi, setFilterLokasi] = useState('Semua');
 
+  const perusahaanLogos = [
+  { name: 'Perusahaan A', url: '/logos/perusahaan-a.png' },
+  { name: 'Perusahaan B', url: '/logos/perusahaan-b.png' },
+  { name: 'Perusahaan C', url: '/logos/perusahaan-c.png' },
+  { name: 'Perusahaan D', url: '/logos/perusahaan-d.png' },
+  { name: 'Perusahaan E', url: '/logos/perusahaan-e.png' },
+  // Tambahkan sesuai kebutuhan
+];
+
   useEffect(() => {
     const fetchJobs = async () => {
       const { data, error } = await supabase
@@ -112,6 +121,24 @@ export default function JobsPage() {
           })}
         </div>
       )}
+
+      <div className="mt-16">
+      <h2 className="text-2xl font-bold mb-6 text-center">Telah Dipercaya Oleh</h2>
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center">
+        {perusahaanLogos.map((perusahaan) => (
+          <div key={perusahaan.name} className="flex items-center justify-center h-20">
+            <Image
+              src={perusahaan.url}
+              alt={perusahaan.name}
+              width={120}
+              height={60}
+              className="object-contain"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+      
     </div>
   );
 }
