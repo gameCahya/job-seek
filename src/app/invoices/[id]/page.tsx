@@ -97,8 +97,8 @@ export default function InvoicePage() {
 
       {/* Note */}
       <div className="text-gray-500 text-sm mb-8">
-        <p>Bank: BCA</p>
-        <p>No Rekening: 1234567890</p>
+        <p>Bank:Seabank : 901484983783 a.n Andoyo </p>
+        <p>Bank BCA Digital : 0086 0694 2105 a.n Andoyo </p>
         <p>a.n PT Job Seekers Indonesia</p>
       </div>
 

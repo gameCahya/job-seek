@@ -56,7 +56,11 @@ export async function POST(req: Request) {
         Akun Tambahan: ${akunTambahan?.join(', ') || '-'}
         Paket: ${paket}
         Total Tagihan: Rp${Number(tagihan).toLocaleString('id-ID')}
-        
+
+        Silahkan lakukan pemmbayaran ke rekening ini 
+        Kirimkan bukti pembayaran ke nomer ini 
+
+
         📄 Invoice: ${invoiceUrl}`;
 
         
