@@ -33,6 +33,12 @@ Akun Tambahan: ${akunTambahan?.join(', ') || '-'}
 Paket: ${paket}
 Tagihan: Rp${Number(tagihan).toLocaleString('id-ID')}
 
+Silahkan melakukan pembayaran pada salah satu rekening ini :
+Seabank : 901484983783 a.n Andoyo
+Bank BCA Digital : 0086 0694 2105 a.n Andoyo
+
+Konfirmasi kenomer ini ya kak 085226151402
+
 📄 Invoice: ${invoiceUrl}`;
 
     const adminMessage = `📥 Pendaftar Baru:
