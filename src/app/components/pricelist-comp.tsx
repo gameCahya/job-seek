@@ -11,7 +11,7 @@ type Package = {
 const packages: Package[] = [
   {
     name: 'STARTER',
-    price: 45000,
+    price: 50000,
     originalPrice: 125000,
     features: [
       '1x Post di Website',
@@ -24,8 +24,8 @@ const packages: Package[] = [
   },
   {
     name: 'BASIC',
-    price: 95000,
-    originalPrice: 175000,
+    price: 85000,
+    originalPrice: 300000,
     features: [
       '1x Post di Website',
       '2x Post Feed Instagram',
@@ -38,10 +38,11 @@ const packages: Package[] = [
   },
   {
     name: 'PREMIUM',
-    price: 135000,
-    originalPrice: 250000,
+    price: 125000,
+    originalPrice: 400000,
     features: [
       '1x Post di Website',
+      'Dapat Semua Akun',
       '4x Post Feed Instagram',
       '6x Post Story Instagram',
       'Tag Akun Instagram',
