@@ -19,7 +19,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ success: false, message: 'Data tidak lengkap' }, { status: 400 });
     }
 
-    const invoiceUrl = `https://jobseek.com/invoices/${id}`; // pakai id (bukan token UUID)
+    const invoiceUrl = `https://jobseekindonesia.com/invoices/${id}`; // pakai id (bukan token UUID)
 
     const tokenFonnte = process.env.FONNTE_TOKEN;
     const adminWA = process.env.ADMIN_WA;
