@@ -20,9 +20,9 @@ const RegistrationForm = () => {
   const [email, setEmail] = useState('');
   const [whatsapp, setWhatsapp] = useState('');
   const [mainAccount, setMainAccount] = useState('');
-  const [selectedPackage, setSelectedPackage] = useState(45000);
+  const [selectedPackage, setSelectedPackage] = useState(50000);
   const [selectedExtras, setSelectedExtras] = useState<string[]>([]);
-  const [totalCost, setTotalCost] = useState(45000);
+  const [totalCost, setTotalCost] = useState(50000);
   const [errorMsg, setErrorMsg] = useState('');
   const [successMsg, setSuccessMsg] = useState('');
 
@@ -175,9 +175,9 @@ const RegistrationForm = () => {
             }}
             className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
           >
-            <option value={45000}>STARTER - Rp 45.000</option>
-            <option value={95000}>BASIC - Rp 95.000</option>
-            <option value={135000}>PREMIUM - Rp 135.000</option>
+            <option value={50000}>STARTER - Rp 50.000</option>
+            <option value={85000}>BASIC - Rp 85.000</option>
+            <option value={125000}>PREMIUM - Rp 125.000</option>
           </select>
         </div>
 
