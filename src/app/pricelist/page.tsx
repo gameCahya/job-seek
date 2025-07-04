@@ -54,7 +54,7 @@ export default function Home() {
       <PriceList />
 
       {/* Konten Utama - Langkah, Syarat, Form */}
-      <div className="container mx-auto px-4 py-10 max-w-7xxl">
+      <div className="container mx-auto px-4 py-10 max-w-7xxl dark:bg-white">
        
         {/* Grid Layout (3 Kolom) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
