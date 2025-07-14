@@ -20,6 +20,7 @@ export async function POST(req: Request) {
     }
 
     const invoiceUrl = `https://jobseekindonesia.com/invoices/${id}`; // pakai id (bukan token UUID)
+    const kelengkapanUrl = ${invoiceUrl}/kelengkapan;
 
     const tokenFonnte = process.env.FONNTE_TOKEN;
     const adminWA = process.env.ADMIN_WA;
@@ -33,13 +34,18 @@ Akun Tambahan: ${akunTambahan?.join(', ') || '-'}
 Paket: ${paket}
 Tagihan: Rp${Number(tagihan).toLocaleString('id-ID')}
 
+Link kelengkapan :  
+
 Silahkan melakukan pembayaran pada salah satu rekening ini :
 Seabank : 901484983783 a.n Andoyo
 Bank BCA Digital : 0086 0694 2105 a.n Andoyo
 
-Konfirmasi kenomer ini ya kak 085226151402
+Konfirmasi kenomer ini ya kak ${adminWA}
 
-📄 Invoice: ${invoiceUrl}`;
+📄 Invoice: ${invoiceUrl}
+
+website : jobseekindonesia.com
+whatsapp : ${adminWA}`;
 
     const adminMessage = `📥 Pendaftar Baru:
 Nama: ${nama}
