@@ -46,22 +46,20 @@ export default function Home() {
     },
   ]
 
-
-
   return (
     <>
       {/* Bagian Daftar Harga */}
       <PriceList />
 
       {/* Konten Utama - Langkah, Syarat, Form */}
-      <div className="container mx-auto px-4 py-10 max-w-7xxl dark:bg-white">
+      <div className="container mx-auto px-4 py-10 max-w-7xxl bg-white dark:bg-gray-900 transition-colors duration-300">
        
         {/* Grid Layout (3 Kolom) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
 
           {/* Kolom 1: Langkah Pendaftaran */}
           <section className="md:col-span-1 space-y-6">
-           <h1 className="text-3xl font-bold text-center mb-12">Langkah-Langkah Pendaftaran</h1>
+            <h1 className="text-3xl font-bold text-center mb-12 dark:text-white">Langkah-Langkah Pendaftaran</h1>
 
             {steps.map((step) => (
               <RegistrationStep key={step.number} step={step} />
@@ -71,11 +69,11 @@ export default function Home() {
           {/* Kolom 2: Syarat dan Ketentuan */}
           <section className="md:col-span-1 space-y-6">
             <div className="flex flex-col items-center text-center mb-8">
-              <FontAwesomeIcon className="text-blue-500 text-7xl" icon={faFile} />
-              <h2 className="text-2xl font-bold text-blue-500 mt-6">Syarat dan Ketentuan</h2>
+              <FontAwesomeIcon className="text-blue-500 dark:text-blue-400 text-7xl" icon={faFile} />
+              <h2 className="text-2xl font-bold text-blue-500 dark:text-blue-400 mt-6">Syarat dan Ketentuan</h2>
             </div>
 
-            <ul className="space-y-3 text-sm md:text-base text-gray-700 list-disc pl-5">
+            <ul className="space-y-3 text-sm md:text-base text-gray-700 dark:text-gray-300 list-disc pl-5">
               <li>Iklan tidak memiliki batas waktu tayang unlimited, tetapi akan tergeser jika ada iklan baru.</li>
               <li>Jeda tiap posting adalah 3 hari sekali untuk paket iklan > 2x posting.</li>
               <li>Bisa request jadwal posting maksimal 3 hari dari jadwal sebelumnya.</li>
@@ -91,7 +89,7 @@ export default function Home() {
           </section>
 
           {/* Kolom 3: Form Pendaftaran */}
-          <section className="md:col-span-1 bg-white p-6 rounded-xl shadow-md">
+          <section className="md:col-span-1 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md dark:shadow-gray-900/50 border border-gray-200 dark:border-gray-700 transition-colors duration-300">
             <RegistrationForm />
           </section>
         </div>
