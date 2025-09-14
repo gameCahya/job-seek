@@ -20,7 +20,7 @@ export async function POST(req: Request) {
     }
 
     const invoiceUrl = `https://jobseekindonesia.com/invoices/${id}`; // pakai id (bukan token UUID)
-    const kelengkapanUrl = '${invoiceUrl}/kelengkapan';
+    const kelengkapanUrl = `${invoiceUrl}/kelengkapan`;
 
     const tokenFonnte = process.env.FONNTE_TOKEN;
     const adminWA = process.env.ADMIN_WA;

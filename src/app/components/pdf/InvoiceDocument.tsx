@@ -125,9 +125,9 @@ const InvoiceDocument = ({ data }: { data: any }) => {
         {/* Note */}
         <View style={styles.note}>
           <Text>Note:</Text>
-          <Text>Bank: BCA</Text>
-          <Text>No Rekening: 1234567890</Text>
-          <Text>a.n PT Job Seekers Indonesia</Text>
+          <Text>Seabank : 901484983783 a.n Andoyo</Text>
+          <Text>Bank BCA Digital : 0086 0694 2105 a.n Andoyo</Text>
+          <Text>Jobseek Indonesia</Text>
         </View>
       </Page>
     </Document>

@@ -99,7 +99,7 @@ export default function InvoicePage() {
       <div className="text-gray-500 text-sm mb-8">
         <p>Seabank : 901484983783 a.n Andoyo </p>
         <p>Bank BCA Digital : 0086 0694 2105 a.n Andoyo </p>
-        <p>a.n PT Job Seekers Indonesia</p>
+        <p>Jobseek Indonesia</p>
       </div>
 
       {/* Tombol Download PDF */}
